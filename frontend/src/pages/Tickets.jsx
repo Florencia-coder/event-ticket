@@ -55,8 +55,8 @@ function Tickets() {
                 console.log({ userTickets });
 
                 // Cargar datos de eventos únicos
-                const uniqueEventIds = [...new Set(userTickets.map(ticket => ticket.eventId))];
-                const eventPromises = uniqueEventIds.map(async (eventId) => {
+                const uniqueEventIds = [...new Set(userTickets?.map(ticket => ticket.eventId))];
+                const eventPromises = uniqueEventIds?.map(async (eventId) => {
                     const eventData = await getEventById(eventId);
                     return { id: eventId, data: eventData };
                 });
@@ -69,7 +69,7 @@ function Tickets() {
                 setEvents(eventMap);
 
                 // Generar QR codes para cada ticket
-                const qrPromises = userTickets.map(async (ticket) => {
+                const qrPromises = userTickets?.map(async (ticket) => {
                     const qrUrl = await QRCode.toDataURL(ticket.qrData);
                     return { id: ticket.id, qrUrl };
                 });
@@ -147,7 +147,7 @@ function Tickets() {
                         </p>
                     ) : (
                         <div className="events-container">
-                            {Object.entries(groupTicketsByEvent()).map(([eventId, eventTickets]) => {
+                            {Object.entries(groupTicketsByEvent())?.map(([eventId, eventTickets]) => {
                                 const event = events[eventId] || {};
                                 const dateValue = event.fecha;
                                 const eventDate = dateValue ? new Date(dateValue) : null;
@@ -172,7 +172,7 @@ function Tickets() {
                                         </div>
 
                                         <div className="tickets-grid">
-                                            {eventTickets.map((ticket) => (
+                                            {eventTickets?.map((ticket) => (
                                                 <div key={ticket.id} className="ticket-card">
                                                     <div className="ticket-header">
                                                         <div>

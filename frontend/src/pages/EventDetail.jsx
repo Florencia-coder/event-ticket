@@ -134,7 +134,7 @@ function EventDetail() {
 
             // Generar QR codes para cada ticket creado
             const tickets = Array.isArray(response.tickets) ? response.tickets : [response.ticket];
-            const qrPromises = tickets.map(async (ticket) => {
+            const qrPromises = tickets?.map(async (ticket) => {
                 const qrUrl = await QRCode.toDataURL(ticket.qrData);
                 return qrUrl;
             });
@@ -302,7 +302,7 @@ function EventDetail() {
                                 <div className="qr-preview">
                                     <p>{qrCodeUrls.length} Ticket{qrCodeUrls.length > 1 ? 's' : ''} creado{qrCodeUrls.length > 1 ? 's' : ''}! Redirigiendo...</p>
                                     <div className="qr-codes-container">
-                                        {qrCodeUrls.map((qrUrl, index) => (
+                                        {qrCodeUrls?.map((qrUrl, index) => (
                                             <div key={index} className="qr-code-item">
                                                 <p>Ticket {index + 1}</p>
                                                 <img src={qrUrl} alt={`QR Code del ticket ${index + 1}`} />

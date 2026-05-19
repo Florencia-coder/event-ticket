@@ -120,7 +120,7 @@ export default function Register() {
 
                 <form className="register-form" onSubmit={handleSubmit}>
                     <div className="register-fields">
-                        {fields.map(({ name, label, type }) => (
+                        {fields?.map(({ name, label, type }) => (
                             <div className="field-group" key={name}>
                                 <input
                                     className={`field-input ${validationErrors[name] ? "field-input--error" : ""}`}

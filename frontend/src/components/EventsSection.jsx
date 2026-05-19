@@ -16,7 +16,7 @@ function EventsSection() {
                 </p>
 
                 <div className="events-grid">
-                    {events.map((event) => (
+                    {events?.map((event) => (
                         <EventCard key={event.id} event={event} />
                     ))}
                 </div>
