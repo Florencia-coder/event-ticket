@@ -42,3 +42,24 @@ export const createEvent = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 };
+
+export const createEvents = async (req, res) => {
+    try {
+        const eventsData = req.body;
+
+        if (!Array.isArray(eventsData) || eventsData.length === 0) {
+            return res.status(400).json({
+                message: "Se debe enviar un arreglo de eventos para la creación masiva"
+            });
+        }
+
+        const newEvents = await Event.bulkCreate(eventsData);
+
+        res.status(201).json({
+            message: "Eventos creados",
+            events: newEvents
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
