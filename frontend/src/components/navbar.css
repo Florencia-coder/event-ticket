@@ -1,0 +1,315 @@
+/* =========================================
+   NAVBAR — Paleta marino #0B1F3A + naranja
+   ========================================= */
+
+.navbar {
+    background-color: #FF8C00;
+    padding: 0 48px;
+    width: 100%;
+    min-height: 95px;
+
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 2px solid #0B1F3A;
+    box-shadow: 0 8px 24px rgba(11, 31, 58, 0.15);
+
+    transition: min-height 0.3s ease, background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado scrolled: más compacto y levemente más oscuro */
+.navbar.scrolled {
+    min-height: 60px;
+    background-color: #E07A00;
+    border-bottom-color: rgba(13, 0, 100, 0.512);
+    box-shadow: 0 6px 20px rgba(11, 31, 58, 0.2);
+}
+
+/* ---- Brand (logo + divisor + nombre) ---- */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.navbar-brand a {
+    display: flex;
+    align-items: center;
+}
+
+/* Caja naranja que enmarca el ícono/logo, igual que en el diseño */
+.logo-wrapper {
+    background-color: transparent;
+    border: 1.8px solid #0B1F3A;
+    padding: 4px 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar.scrolled .logo-wrapper {
+    padding: 3px 6px;
+}
+
+.logo-wrapper:hover {
+    background-color: rgba(11, 31, 58, 0.1);
+    box-shadow: 0 2px 8px rgba(11, 31, 58, 0.15);
+}
+
+.logo {
+    height: 2rem;
+    display: block;
+    transition: height 0.3s ease;
+}
+
+.navbar.scrolled .logo {
+    height: 1.6rem;
+}
+
+.brand-divider {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    user-select: none;
+}
+
+.brand-name {
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* ---- Links y botones ---- */
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.link-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 1em;
+    padding: 0 0.3em;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    position: relative;
+}
+
+.link-btn:hover {
+    color: #0B1F3A;
+    opacity: 0.95;
+}
+
+.link-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0B1F3A;
+    transition: width 0.3s ease;
+}
+
+.link-btn:hover::after {
+    width: 100%;
+}
+
+/* Botón INGRESAR — borde naranja, texto naranja, sin relleno */
+.btn {
+    padding: 0.42rem 1.2rem;
+    border-radius: 0;
+    color: #0B1F3A;
+    background-color: transparent;
+    border: 1.5px solid #0B1F3A;
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #0B1F3A;
+    border-color: #0B1F3A;
+    box-shadow: 0 4px 12px rgba(11, 31, 58, 0.25);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+    z-index: 1100;
+}
+
+/* =========================
+   MOBILE / TABLET ≤ 1024px
+   ========================= */
+
+@media (max-width: 1024px) {
+
+    .navbar {
+        padding: 0 24px;
+        min-height: 70px;
+    }
+
+    .navbar.scrolled {
+        min-height: 60px;
+        box-shadow: 0 4px 16px rgba(11, 31, 58, 0.25);
+    }
+
+    .logo {
+        height: 1.7rem;
+    }
+
+    .navbar.scrolled .logo {
+        height: 1.5rem;
+    }
+
+    /* Mostrar hamburguesa */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Ocultar menú por defecto */
+    .navbar-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #091629;
+        border-bottom: 2px solid #FF8C00;
+        box-shadow: 0 6px 16px rgba(11, 31, 58, 0.2);
+
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+
+        padding: 32px 0 40px 0;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+
+    /* Cuando está abierto */
+    .navbar-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .link-btn {
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .btn {
+        width: 260px;
+        text-align: center;
+        margin: 0;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+/* ---- Usuario logeado ---- */
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    padding-left: 1rem;
+}
+
+.user-name {
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+}
+
+.btn--profile {
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    padding: 0.35rem 1.4rem;
+    font-size: 12px;
+    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn--profile:hover {
+    background-color: #091629;
+    color: #FF8C00;
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.2);
+}
+
+.btn--logout {
+    color: white;
+    border-color: white;
+    padding: 0.35rem 1.4rem;
+    font-size: 12px;
+    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn--logout:hover {
+    background-color: #c33;
+    color: white;
+    border-color: #c33;
+    box-shadow: 0 4px 12px rgba(204, 51, 51, 0.25);
+}
+
+@media (max-width: 1024px) {
+    .navbar-user {
+        flex-direction: column;
+        gap: 12px;
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .user-name {
+        font-size: 0.95rem;
+    }
+
+    .btn--profile,
+    .btn--logout {
+        width: 260px;
+        text-align: center;
+    }
+}

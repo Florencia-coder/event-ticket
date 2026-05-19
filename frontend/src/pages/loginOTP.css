@@ -1,0 +1,192 @@
+.login-otp-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FF8C00 0%, #E07A00 100%);
+    padding: 20px;
+}
+
+.login-otp-card {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(11, 31, 58, 0.2);
+    border-top: 4px solid #FF8C00;
+    position: relative;
+}
+
+.otp-back-btn {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: transparent;
+    border: none;
+    color: #666;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.otp-back-btn:hover {
+    color: #FF8C00;
+}
+
+.login-otp-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    margin-top: 1.5rem;
+}
+
+.login-otp-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0B1F3A;
+    margin: 0 0 1rem;
+    letter-spacing: 0.05em;
+}
+
+.login-otp-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.login-otp-error {
+    background: #fee;
+    border: 1px solid #fcc;
+    color: #c33;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.login-otp-form {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.otp-input {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    width: 180px;
+    padding: 1rem;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    letter-spacing: 15px;
+    font-family: 'Courier New', monospace;
+    transition: border-color 0.2s ease;
+}
+
+.otp-input:focus {
+    outline: none;
+    border-color: #FF8C00;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+}
+
+.otp-input::placeholder {
+    color: #ddd;
+    letter-spacing: 8px;
+}
+
+.otp-hint {
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.otp-verify-btn {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: #FF8C00;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+}
+
+.otp-verify-btn:hover:not(:disabled) {
+    background: #E07A00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.35);
+}
+
+.otp-verify-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.otp-resend-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    color: #FF8C00;
+    border: 2px solid #FF8C00;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+}
+
+.otp-resend-btn:hover:not(:disabled) {
+    background: #FF8C00;
+    color: white;
+}
+
+.otp-resend-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.otp-timer {
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+}
+
+.otp-footer {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+.otp-footer a {
+    color: #FF8C00;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.otp-footer a:hover {
+    border-bottom: 1px solid #FF8C00;
+}
+
+@media (max-width: 500px) {
+    .login-otp-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .login-otp-title {
+        font-size: 1.5rem;
+    }
+
+    .otp-input {
+        width: 140px;
+        font-size: 2.5rem;
+        letter-spacing: 12px;
+    }
+}

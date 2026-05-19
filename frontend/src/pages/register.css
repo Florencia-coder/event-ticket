@@ -1,0 +1,322 @@
+/* ── Variables ──────────────────────────────────────────── */
+:root {
+    --orange: #FF8C00;
+    --orange-dark: #E07A00;
+    --navy: #0B1F3A;
+    --navy-light: #132d52;
+    --white: #ffffff;
+    --gray-50: #f9f9f9;
+    --gray-200: #e5e5e5;
+    --gray-400: #999999;
+    --gray-700: #444444;
+    --radius: 12px;
+    --transition: 0.25s ease;
+}
+
+/* ── Reset básico ───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ── Página wrapper ─────────────────────────────────────── */
+.register-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FF8C00 0%, #E07A00 100%);
+    padding: 120px 20px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Card ───────────────────────────────────────────────── */
+.register-card {
+    position: relative;
+    z-index: 1;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 640px;
+    box-shadow: 0 10px 40px rgba(11, 31, 58, 0.2);
+    border-top: 4px solid var(--orange);
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.register-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.register-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--orange);
+    background: rgba(255, 140, 0, 0.08);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+}
+
+.register-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.register-sub {
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* ── Campos ─────────────────────────────────────────────── */
+.register-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.field-group {
+    position: relative;
+}
+
+/* Input */
+.field-input {
+    width: 100%;
+    padding: 0.85rem 0 0.4rem;
+    border: none;
+    border-bottom: 1.5px solid var(--gray-200);
+    background: transparent;
+    font-size: 0.95rem;
+    color: var(--navy);
+    outline: none;
+    transition: border-color var(--transition);
+}
+
+/* Label flotante */
+.field-label {
+    position: absolute;
+    top: 0.85rem;
+    left: 0;
+    font-size: 0.875rem;
+    color: var(--gray-400);
+    pointer-events: none;
+    transition: all var(--transition);
+    transform-origin: left center;
+}
+
+/* Input placeholder trick (necesita placeholder=" ") */
+.field-input:focus~.field-label,
+.field-input:not(:placeholder-shown)~.field-label {
+    transform: translateY(-1.05rem) scale(0.8);
+    color: var(--orange);
+}
+
+/* Línea animada */
+.field-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--orange);
+    transition: width var(--transition);
+    display: block;
+}
+
+.field-input:focus~.field-line {
+    width: 100%;
+}
+
+.field-input:focus {
+    border-bottom-color: transparent;
+}
+
+/* ── Botón ──────────────────────────────────────────────── */
+.register-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background: var(--orange);
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.register-btn:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(255, 140, 0, 0.23);
+}
+
+.register-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.btn-arrow {
+    width: 16px;
+    height: 16px;
+    transition: transform var(--transition);
+}
+
+.register-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+/* ── Link login ─────────────────────────────────────────── */
+.register-login {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.register-link {
+    color: var(--orange);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--orange);
+    transition: color var(--transition);
+}
+
+.register-link:hover {
+    color: #E07A00;
+}
+
+/* ── Decoración de fondo ────────────────────────────────── */
+.register-deco {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 640px) {
+    .register-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .register-fields {
+        gap: 1rem;
+    }
+
+    .register-title {
+        font-size: 1.6rem;
+    }
+}
+
+.deco-circle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.deco-circle--1 {
+    width: 320px;
+    height: 320px;
+    top: -100px;
+    right: -80px;
+    background: radial-gradient(circle, rgba(255, 140, 0, .12) 0%, transparent 70%);
+}
+
+.deco-circle--2 {
+    width: 240px;
+    height: 240px;
+    bottom: -80px;
+    left: -60px;
+    background: radial-gradient(circle, rgba(11, 31, 58, .07) 0%, transparent 70%);
+}
+
+.deco-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            transparent,
+            rgba(255, 140, 0, 0.08) 30%,
+            rgba(255, 140, 0, 0.08) 70%,
+            transparent);
+}
+
+/* ── Input tipo date (placeholder visual) ───────────────── */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+/* ── Errores de validación ──────────────────────────────── */
+.register-error {
+    background: #fee;
+    border: 1px solid #fcc;
+    color: #c33;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.field-input--error {
+    border-bottom-color: #c33 !important;
+}
+
+.field-input--error:focus~.field-line {
+    background: #c33;
+}
+
+.field-input--error:focus~.field-label,
+.field-input--error:not(:placeholder-shown)~.field-label {
+    color: #c33;
+}
+
+.field-error {
+    display: block;
+    color: #c33;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+/* ── Button disabled ────────────────────────────────────── */
+.register-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.register-btn:disabled:hover {
+    background: var(--orange);
+    transform: none;
+    box-shadow: none;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 500px) {
+    .register-card {
+        padding: 2rem 1.5rem 1.75rem;
+    }
+
+    .register-title {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,145 @@
+.login-options-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FF8C00 0%, #E07A00 100%);
+    padding: 20px;
+}
+
+.login-options-card {
+    background: white;
+    border-radius: 12px;
+    padding: 3rem;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(11, 31, 58, 0.2);
+    border-top: 4px solid #FF8C00;
+}
+
+.login-options-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-options-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0B1F3A;
+    margin: 0 0 1rem;
+    letter-spacing: 0.05em;
+}
+
+.login-options-email {
+    color: #FF8C00;
+    font-weight: 600;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.login-options-error {
+    background: #fee;
+    border: 1px solid #fcc;
+    color: #c33;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.login-options-methods {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.method-card {
+    border: 2px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.method-card:hover {
+    border-color: #FF8C00;
+    box-shadow: 0 4px 12px rgba(255, 140, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+.method-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.method-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0B1F3A;
+    margin: 0 0 0.5rem;
+}
+
+.method-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+}
+
+.method-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background: #FF8C00;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.method-btn:hover:not(:disabled) {
+    background: #E07A00;
+    transform: translateY(-2px);
+}
+
+.method-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.login-options-footer {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+.login-options-footer a {
+    color: #FF8C00;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #FF8C00;
+}
+
+.login-options-footer a:hover {
+    color: #E07A00;
+}
+
+@media (max-width: 600px) {
+    .login-options-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .login-options-title {
+        font-size: 1.5rem;
+    }
+
+    .login-options-methods {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
