@@ -14,3 +14,8 @@ export const createEvent = async (eventData) => {
     const { data } = await api.post("/events", eventData);
     return data;
 };
+
+export const createEvents = async (eventsData) => {
+    const { data } = await api.post("/events/bulk", eventsData);
+    return data;
+};
