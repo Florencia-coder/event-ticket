@@ -1,4 +1,4 @@
-import "./EventsSection.css";
+import "./eventsSection.css";
 import EventCard from "./EventCard";
 import { useEvents } from "../hooks/useEvents";
 
