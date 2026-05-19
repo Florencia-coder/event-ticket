@@ -1,4 +1,4 @@
-import './FooterSocial.css';
+import './footerSocial.css';
 
 export default function FooterSocial() {
     return (
