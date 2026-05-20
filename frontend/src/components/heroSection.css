@@ -1,9 +1,13 @@
+/* ── Base ── */
 .hero {
     display: flex;
     height: calc(100vh - 80px);
+    min-height: 500px;
 }
 
-/* ── Mitad izquierda ── */
+/* ══════════════════════════
+   MITAD IZQUIERDA
+══════════════════════════ */
 .hero__left {
     position: relative;
     width: 50%;
@@ -20,14 +24,14 @@
     right: 24px;
     background: transparent;
     border: none;
-    color: rgba(255, 255, 255, 0.944);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 18px;
     cursor: pointer;
     transition: color 0.2s ease;
 }
 
 .hero__close:hover {
-    color: #FF8C00;
+    color: #0B1F3A;
 }
 
 .hero__title {
@@ -42,7 +46,7 @@
 .hero__subtitle {
     font-size: 13px;
     font-weight: 600;
-    color: rgba(6, 0, 51, 0.703);
+    color: rgba(6, 0, 51, 0.7);
     letter-spacing: 0.14em;
     margin: 0 0 28px;
 }
@@ -55,41 +59,6 @@
     border-radius: 4px;
     overflow: hidden;
     max-width: 420px;
-}
-
-.hero__cta {
-    margin-top: 28px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    align-items: center;
-}
-
-.hero__cta-text {
-    margin: 0;
-    color: rgba(11, 31, 58, 0.85);
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.hero__link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 22px;
-    background-color: #0B1F3A;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    border-radius: 999px;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.hero__link:hover {
-    background-color: #162A4D;
-    transform: translateY(-1px);
 }
 
 .hero__input {
@@ -122,11 +91,47 @@
     color: #cc7000;
 }
 
+/* ── CTA registro ── */
+.hero__cta {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.hero__cta-text {
+    margin: 0;
+    color: rgba(11, 31, 58, 0.85);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hero__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    background-color: #0B1F3A;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero__link:hover {
+    background-color: #162A4D;
+    transform: translateY(-1px);
+}
+
 /* ── Estado cerrado ── */
 .hero__reopen {
     background: transparent;
-    border: 2px solid rgba(255, 140, 0, 0.4);
-    color: #FF8C00;
+    border: 2px solid rgba(11, 31, 58, 0.4);
+    color: #0B1F3A;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -138,14 +143,120 @@
 }
 
 .hero__reopen:hover {
-    border-color: #FF8C00;
-    background-color: rgba(255, 140, 0, 0.08);
+    border-color: #0B1F3A;
+    background-color: rgba(11, 31, 58, 0.08);
 }
 
-/* ── Mitad derecha — foto ── */
+/* ══════════════════════════
+   MITAD DERECHA — foto
+══════════════════════════ */
 .hero__right {
     width: 50%;
     background-image: url('/assets/images/movi1.jpg');
     background-size: cover;
     background-position: center;
+    background-color: #1a1a2e;
+}
+
+/* ══════════════════════════
+   TABLET — hasta 1024px
+══════════════════════════ */
+@media (max-width: 1024px) {
+    .hero__left {
+        width: 60%;
+        padding: 0 48px;
+    }
+
+    .hero__right {
+        width: 40%;
+    }
+
+    .hero__title {
+        font-size: clamp(26px, 4vw, 40px);
+    }
+}
+
+/* ══════════════════════════
+   MOBILE — hasta 768px
+   Hero full screen con foto
+   de fondo + overlay
+══════════════════════════ */
+@media (max-width: 768px) {
+    .hero {
+        position: relative;
+        height: calc(100vh - 70px);
+        min-height: 560px;
+    }
+
+    /* La foto pasa a ser fondo de toda la sección */
+    .hero__right {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    /* Panel ocupa todo el ancho sobre la foto */
+    .hero__left {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+        background-color: rgba(255, 140, 0, 0.88);
+        padding: 0 28px;
+        justify-content: flex-end;
+        padding-bottom: 52px;
+    }
+
+    .hero__title {
+        font-size: clamp(32px, 8vw, 48px);
+    }
+
+    .hero__search {
+        max-width: 100%;
+    }
+
+    .hero__close {
+        top: 20px;
+        right: 20px;
+    }
+
+    .hero__cta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .hero__link {
+        width: 100%;
+        justify-content: center;
+        padding: 14px;
+    }
+
+    .hero__reopen {
+        align-self: center;
+    }
+}
+
+/* ══════════════════════════
+   MOBILE PEQUEÑO — hasta 480px
+══════════════════════════ */
+@media (max-width: 480px) {
+    .hero__left {
+        padding: 0 20px;
+        padding-bottom: 40px;
+    }
+
+    .hero__title {
+        font-size: clamp(28px, 9vw, 40px);
+    }
+
+    .hero__subtitle {
+        font-size: 11px;
+    }
+
+    .hero__input {
+        padding: 14px 16px;
+        font-size: 14px;
+    }
 }

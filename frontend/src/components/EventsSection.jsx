@@ -2,10 +2,20 @@ import "./eventsSection.css";
 import EventCard from "./EventCard";
 import { useEvents } from "../hooks/useEvents";
 
+function SkeletonCard() {
+    return (
+        <div className="skeleton-card">
+            <div className="skeleton-img" />
+            <div className="skeleton-body">
+                <div className="skeleton-line skeleton-line--title" />
+                <div className="skeleton-line skeleton-line--date" />
+            </div>
+        </div>
+    );
+}
+
 function EventsSection() {
     const { data: events = [], isLoading } = useEvents();
-
-    if (isLoading) return <p>Cargando eventos...</p>;
 
     return (
         <section id="events" className="events-section">
@@ -16,9 +26,14 @@ function EventsSection() {
                 </p>
 
                 <div className="events-grid">
-                    {events?.map((event) => (
-                        <EventCard key={event.id} event={event} />
-                    ))}
+                    {isLoading
+                        ? Array.from({ length: 3 }).map((_, i) => (
+                            <SkeletonCard key={i} />
+                        ))
+                        : events?.map((event) => (
+                            <EventCard key={event.id} event={event} />
+                        ))
+                    }
                 </div>
             </div>
         </section>
