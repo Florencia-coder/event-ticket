@@ -106,36 +106,36 @@ function Tickets() {
         return grouped;
     };
 
-    if (loading) {
-        return (
-            <div className="tickets-page">
-                <div className="tickets-container">
-                    <h1 className="tickets-title">Mis Entradas</h1>
-                    <p style={{ textAlign: 'center', color: '#999', marginTop: '2rem' }}>
-                        Cargando tus entradas...
-                    </p>
+    if (loading) return (
+        <div className="tickets-page">
+            <div className="tickets-container">
+                <h1 className="tickets-title">MIS ENTRADAS</h1>
+                <div className="tickets-content">
+                    <div className="tickets-state">
+                        <span>Cargando tus entradas...</span>
+                    </div>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 
-    if (error) {
-        return (
-            <div className="tickets-page">
-                <div className="tickets-container">
-                    <h1 className="tickets-title">Mis Entradas</h1>
-                    <p style={{ textAlign: 'center', color: '#f44336', marginTop: '2rem' }}>
-                        {error}
-                    </p>
+    if (error) return (
+        <div className="tickets-page">
+            <div className="tickets-container">
+                <h1 className="tickets-title">MIS ENTRADAS</h1>
+                <div className="tickets-content">
+                    <div className="tickets-state tickets-state--error">
+                        <span>{error}</span>
+                    </div>
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 
     return (
         <div className="tickets-page">
             <div className="tickets-container">
-                <h1 className="tickets-title">Mis Entradas</h1>
+                <h1 className="tickets-title">MIS ENTRADAS</h1>
                 <p className="tickets-subtitle">
                     Bienvenido, {user?.nombre}!
                 </p>
@@ -200,15 +200,19 @@ function Tickets() {
                                                         <button
                                                             className="download-btn"
                                                             onClick={() => handleDownloadPDF(ticket.id)}
+                                                            title="Descargar PDF"
+                                                            aria-label="Descargar ticket"
                                                         >
-                                                            Descargar
+                                                            <i className="fa fa-download" aria-hidden="true" />
                                                         </button>
                                                         <button
                                                             className="delete-btn"
                                                             onClick={() => handleDeleteTicket(ticket.id)}
                                                             disabled={ticket.status === 'used'}
+                                                            title="Eliminar ticket"
+                                                            aria-label="Eliminar ticket"
                                                         >
-                                                            Eliminar
+                                                            <i className="fa fa-trash" aria-hidden="true" />
                                                         </button>
                                                     </div>
                                                 </div>

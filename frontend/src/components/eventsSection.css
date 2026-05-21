@@ -1,6 +1,7 @@
 .events-section {
-    padding: 80px 20px;
+    padding: 90px 20px;
     text-align: center;
+    background-color: #fafafa;
 }
 
 .container {
@@ -8,40 +9,79 @@
     margin: 0 auto;
 }
 
+/* ── Header ── */
 .events-section h2 {
-    font-size: 3rem;
-    color: var(--tiger-orange);
-    letter-spacing: 6px;
-    margin-bottom: 10px;
+    font-size: clamp(1.4rem, 5vw, 3rem);
+    /* escala fluido según pantalla */
+    color: #0B1F3A;
+    letter-spacing: clamp(2px, 1vw, 6px);
+    /* letter-spacing también escala */
+    margin-bottom: 12px;
+    font-weight: 800;
+    word-break: break-word;
+    /* evita overflow horizontal */
+}
+
+.events-section h2 span {
+    color: #FF8C00;
+}
+
+.events-header-line {
+    width: 56px;
+    height: 3px;
+    background-color: #FF8C00;
+    margin: 0 auto 16px;
+    border-radius: 2px;
 }
 
 .subtitle {
-    font-size: 1.6rem;
-    color: #555;
-    margin-bottom: 50px;
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 56px;
+    font-weight: 400;
 }
 
+/* ── Grid ── */
 .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 30px;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
     align-items: stretch;
-    grid-auto-rows: minmax(1fr, auto);
 }
 
-/* RESPONSIVE */
+/* ── Empty state ── */
+.events-empty {
+    grid-column: 1 / -1;
+    padding: 60px 20px;
+    color: #aaa;
+    font-size: 1rem;
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
+    .events-section {
+        padding: 60px 16px;
+    }
+
     .events-section h2 {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        letter-spacing: 4px;
     }
 
     .subtitle {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 }
 
-/* ── Skeleton cards ── */
+/* ══════════════════════════════════════
+   SKELETON
+══════════════════════════════════════ */
 @keyframes shimmer {
     0% {
         background-position: -600px 0;
@@ -54,27 +94,30 @@
 
 .skeleton-card {
     width: 100%;
-    border-radius: 6px;
+    border-radius: 24px;
+    /* igual que event-card */
     overflow: hidden;
     background: #f0f0f0;
+    box-shadow: 0 18px 50px rgba(11, 31, 58, 0.06);
 }
 
 .skeleton-img {
     width: 100%;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
+    min-height: 260px;
     background: linear-gradient(90deg,
             #e8e8e8 25%,
-            #f5f5f5 50%,
+            #f0f0f0 50%,
             #e8e8e8 75%);
     background-size: 600px 100%;
     animation: shimmer 1.4s infinite linear;
 }
 
 .skeleton-body {
-    padding: 14px 16px 18px;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .skeleton-line {
@@ -87,12 +130,30 @@
     animation: shimmer 1.4s infinite linear;
 }
 
-.skeleton-line--title {
-    height: 16px;
-    width: 70%;
+.skeleton-line--tag {
+    height: 12px;
+    width: 30%;
 }
 
-.skeleton-line--date {
+.skeleton-line--title {
+    height: 18px;
+    width: 75%;
+    margin-top: 4px;
+}
+
+.skeleton-line--copy {
     height: 13px;
-    width: 40%;
+    width: 90%;
+}
+
+.skeleton-line--copy2 {
+    height: 13px;
+    width: 60%;
+}
+
+.skeleton-line--btn {
+    height: 40px;
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 8px;
 }

@@ -9,18 +9,20 @@ function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-
+        const handleScroll = () => setScrolled(window.scrollY > 50);
         window.addEventListener("scroll", handleScroll);
-
-        return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Cierra el menú al hacer scroll en mobile
+    useEffect(() => {
+        if (menuOpen) setMenuOpen(false);
+    }, [scrolled]);
+
+    const closeMenu = () => setMenuOpen(false);
+
     const handleLogout = () => {
+        closeMenu();
         logout();
         window.location.href = "/";
     };
@@ -28,8 +30,7 @@ function Navbar() {
     return (
         <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
             <div className="navbar-brand">
-                <Link to="/">
-                    {/* Logo con fondo naranja para que destaque sobre el marino */}
+                <Link to="/" onClick={closeMenu}>
                     <div className="logo-wrapper">
                         <img
                             src="/assets/images/logo-temporal.webp"
@@ -42,30 +43,30 @@ function Navbar() {
                 <span className="brand-name">TICKET</span>
             </div>
 
-            {/* Botón hamburguesa (solo visible en mobile por CSS) */}
             <button
                 className="menu-toggle"
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={() => setMenuOpen((prev) => !prev)}
                 aria-label="Toggle menu"
+                aria-expanded={menuOpen}
             >
                 {menuOpen ? "✕" : "☰"}
             </button>
 
             <div className={`navbar-links ${menuOpen ? "active" : ""}`}>
-                <a href="/#events" className="link-btn">
-                    <i class="fa fa-music"></i>
+                <a href="/#events" className="link-btn" onClick={closeMenu}>
+                    <i className="fa fa-music" />
                     SHOWS
                 </a>
 
                 {user ? (
                     <>
-                        <Link to="/tickets" className="link-btn">
-                            <i className="fa fa-ticket"></i>
+                        <Link to="/tickets" className="link-btn" onClick={closeMenu}>
+                            <i className="fa fa-ticket" />
                             MIS ENTRADAS
                         </Link>
                         <div className="navbar-user">
                             <span className="user-name">{user?.nombre.toUpperCase()}</span>
-                            <Link to="/profile" className="btn btn--profile">
+                            <Link to="/profile" className="btn btn--profile" onClick={closeMenu}>
                                 PERFIL
                             </Link>
                             <button className="btn btn--logout" onClick={handleLogout}>
@@ -74,7 +75,7 @@ function Navbar() {
                         </div>
                     </>
                 ) : (
-                    <Link to="/login" className="btn">
+                    <Link to="/login" className="btn" onClick={closeMenu}>
                         INGRESAR
                     </Link>
                 )}

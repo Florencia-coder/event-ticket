@@ -7,8 +7,11 @@ function SkeletonCard() {
         <div className="skeleton-card">
             <div className="skeleton-img" />
             <div className="skeleton-body">
+                <div className="skeleton-line skeleton-line--tag" />
                 <div className="skeleton-line skeleton-line--title" />
-                <div className="skeleton-line skeleton-line--date" />
+                <div className="skeleton-line skeleton-line--copy" />
+                <div className="skeleton-line skeleton-line--copy2" />
+                <div className="skeleton-line skeleton-line--btn" />
             </div>
         </div>
     );
@@ -20,20 +23,24 @@ function EventsSection() {
     return (
         <section id="events" className="events-section">
             <div className="container">
-                <h2>PRÓXIMAS PRESENTACIONES</h2>
+                <h2>PRÓXIMAS <span>PRESENTACIONES</span></h2>
+                <div className="events-header-line" />
                 <p className="subtitle">
                     Tu ingreso divertido, rápido y seguro está aquí.
                 </p>
 
                 <div className="events-grid">
-                    {isLoading
-                        ? Array.from({ length: 3 }).map((_, i) => (
+                    {isLoading ? (
+                        Array.from({ length: 3 }).map((_, i) => (
                             <SkeletonCard key={i} />
                         ))
-                        : events?.map((event) => (
+                    ) : events.length === 0 ? (
+                        <p className="events-empty">No hay eventos disponibles por el momento.</p>
+                    ) : (
+                        events.map((event) => (
                             <EventCard key={event.id} event={event} />
                         ))
-                    }
+                    )}
                 </div>
             </div>
         </section>

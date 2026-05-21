@@ -111,3 +111,28 @@
         max-width: 100%;
     }
 }
+
+/* ── Botón ver entradas ── */
+.event-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 4px;
+    padding: 12px;
+    background-color: #FF8C00;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+.event-btn:hover {
+    background-color: #E07A00;
+    transform: translateY(-1px);
+}

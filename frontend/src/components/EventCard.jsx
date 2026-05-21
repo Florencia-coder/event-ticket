@@ -14,7 +14,6 @@ function EventCard({ event }) {
         <div className="event-card" onClick={() => navigate(`/events/${event.id}`)}>
             <div className="event-image">
                 <img src={event.imagen} alt={event.titulo} />
-
                 <div className="event-overlay">
                     <span className="event-badge">PRÓXIMO</span>
                     <div className="overlay-text">
@@ -30,6 +29,9 @@ function EventCard({ event }) {
                 <p className="event-body-copy">
                     Entrada rápida y segura para una experiencia inolvidable.
                 </p>
+                <button className="event-btn">
+                    VER ENTRADAS →
+                </button>
             </div>
         </div>
     );

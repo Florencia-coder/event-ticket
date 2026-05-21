@@ -9,7 +9,6 @@ function Home() {
 
     return (
         <main className="home">
-            {/* HERO SECTION */}
             <HeroSection isAuthenticated={isAuthenticated} user={user} />
             <EventsSection isAuthenticated={isAuthenticated} />
             <InfoSection />
